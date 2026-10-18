@@ -1,0 +1,23 @@
+[[mods]]
+modId="novaclient"
+version="${file.jarVersion}"
+displayName="Nova Client"
+credits="EnderDevelopment"
+authors="EnderDevelopment"
+description='''
+A polished PvP-client-style Minecraft mod for 1.8.9
+'''
+
+[[dependencies.novaclient]]
+    modId="forge"
+    mandatory=true
+    versionRange="[11.15.1.2318,)"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.novaclient]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.8.9,)"
+    ordering="NONE"
+    side="BOTH"

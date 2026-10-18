@@ -1,0 +1,85 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        maven {
+            name = "forge"
+            url = "https://files.minecraftforge.net/maven"
+        }
+    }
+    dependencies {
+        classpath "net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT"
+    }
+}
+
+apply plugin: "net.minecraftforge.gradle"
+
+version = "1.0"
+
+group = "com.enderdevelopment"
+archivesBaseName = "NovaClient"
+
+minecraft {
+    version = "1.8.9-11.15.1.2318-1.8.9"
+    runDir = "run"
+
+    runs {
+        client {
+            workingDirectory project.file("run")
+            property "forgeLogging", "true"
+            property "forgeLoggingFile", "forge_client.log"
+        }
+    }
+}
+
+dependencies {
+    deobfCompile "net.minecraft:launchwrapper:1.12"
+    deobfCompile "org.ow2.asm:asm-all:5.0.4"
+    deobfCompile "com.google.code.gson:gson:2.8.5"
+    deobfCompile "com.google.guava:guava:21.0"
+    deobfCompile "org.apache.commons:commons-lang3:3.5"
+    deobfCompile "commons-io:commons-io:2.6"
+    deobfCompile "commons-codec:commons-codec:1.11"
+    deobfCompile "org.apache.httpcomponents:httpclient:4.5.6"
+    deobfCompile "org.apache.httpcomponents:httpcore:4.4.10"
+    deobfCompile "io.netty:netty-all:4.1.25.Final"
+    deobfCompile "com.ibm.icu:icu4j-core-mojang:51.2.2"
+    deobfCompile "net.java.dev.jna:jna:4.4.0"
+    deobfCompile "net.java.dev.jna:platform:4.4.0"
+    deobfCompile "com.mojang:netty:1.7.7"
+    deobfCompile "com.mojang:realms:1.7.77"
+    deobfCompile "com.mojang:authlib:1.5.25"
+    deobfCompile "com.mojang:patchy:1.1"
+    deobfCompile "oshi-project:oshi-core:1.1"
+    deobfCompile "net.java.jinput:jinput:2.0.5"
+    deobfCompile "net.java.jutils:jutils:1.0.0"
+    deobfCompile "com.mojang:brigadier:1.0.17"
+    deobfCompile "com.google.code.findbugs:jsr305:3.0.2"
+    deobfCompile "com.mojang:datafixerupper:2.0.24"
+    deobfCompile "io.netty:netty-buffer:4.1.25.Final"
+    deobfCompile "io.netty:netty-codec:4.1.25.Final"
+    deobfCompile "io.netty:netty-common:4.1.25.Final"
+    deobfCompile "io.netty:netty-handler:4.1.25.Final"
+    deobfCompile "io.netty:netty-resolver:4.1.25.Final"
+    deobfCompile "io.netty:netty-transport:4.1.25.Final"
+}
+
+processResources {
+    inputs.property "version", project.version
+    inputs.property "mcversion", project.minecraft.version
+}
+
+clean {
+    delete "run"
+}
+
+eclipse {
+    project {
+        name = "NovaClient-1.8.9"
+    }
+}
+
+idea {
+    module {
+        outputDir = file("build/classes/main")
+    }
+}
